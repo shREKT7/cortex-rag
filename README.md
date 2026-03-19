@@ -1,6 +1,7 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=32&pause=1000&color=6C63FF&center=true&vCenter=true&width=600&lines=🧠+CortexRAG;Local+Agentic+AI+%7C+Zero+API+Cost;Think+Locally.+Reason+Deeply." alt="CortexRAG Typing SVG" />
+<h1>🧠 CortexRAG</h1>
+<h3>Local Agentic AI · Zero API Cost · Think Locally. Reason Deeply.</h3>
 
 <br/>
 
