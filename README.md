@@ -1,107 +1,92 @@
-# CortexRAG – Local Agentic AI Knowledge Retrieval System
+# 🧠 CortexRAG – Local Agentic AI Knowledge Retrieval System
 
-[![Python 3.9+](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-Latest-green.svg)](https://fastapi.tiangolo.com/)
-[![LangGraph](https://img.shields.io/badge/LangGraph-Agentic%20Workflow-orange.svg)](https://python.langchain.com/langgraph/)
-[![Ollama](https://img.shields.io/badge/Ollama-Local%20LLM-black.svg)](https://ollama.com/)
+![Python](https://img.shields.io/badge/Python-3.9+-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)
+![LangGraph](https://img.shields.io/badge/LangGraph-Agentic-orange)
+![Ollama](https://img.shields.io/badge/Ollama-Local%20LLM-purple)
+![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
----
-
-# 🧠 CortexRAG
-
-CortexRAG is a **fully local agentic Retrieval-Augmented Generation (RAG) system** that intelligently routes user queries across:
-
-• Document retrieval  
-• General LLM reasoning  
-• Real-time web search  
-
-The system is powered by **LangGraph agent workflows** and runs **entirely locally using Ollama models**, eliminating the need for paid LLM APIs.
-
-This architecture enables **context-aware responses, document reasoning, and tool-based decision making**.
+> 🚀 Fully local, agentic Retrieval-Augmented Generation (RAG) system with intelligent query routing across documents, LLM reasoning, and real-time web search.
 
 ---
 
-# 🎯 Key Features
+## 📌 Overview
 
-## 🧠 Intelligent Query Routing
+**CortexRAG** is a **local-first agentic AI system** that dynamically routes user queries through multiple pipelines:
 
-Automatically classifies queries and routes them to the correct processing pipeline.
+- 📚 Document Retrieval (RAG)
+- 🤖 General LLM Reasoning
+- 🌐 Real-time Web Search
 
-Three query types:
-
-| Type | Description |
-|-----|-------------|
-| **Index** | Answer using uploaded documents |
-| **General** | Answer using LLM knowledge |
-| **Search** | Perform real-time web search |
+Built using **LangGraph workflows + Ollama LLMs**, the system operates **entirely offline (except optional web search)** — eliminating dependency on paid APIs.
 
 ---
 
-# 📚 Advanced RAG Pipeline
+## 🎯 Key Features
 
-• Intelligent document chunking  
-• Semantic embeddings using sentence-transformers  
-• Vector similarity search via FAISS  
-• Relevance grading of retrieved documents  
-• Query rewriting for improved retrieval  
-• Context-aware answer generation  
-
----
-
-# 🤖 Agentic AI Architecture
-
-CortexRAG uses **LangGraph agent orchestration** implementing a multi-node reasoning workflow.
-
-Core nodes include:
-
-• Query analysis  
-• Query classification  
-• Retriever  
-• Web search tool  
-• ReAct agent reasoning  
-• Response generation  
-
-This follows the **ReAct (Reason + Act) agent pattern**.
+### 🧠 Intelligent Query Routing
+Automatically classifies queries into:
+- **Index** → Uses uploaded documents
+- **General** → Uses LLM knowledge
+- **Search** → Uses real-time web search
 
 ---
 
-# 🧠 Fully Local AI Stack
-
-Unlike typical RAG systems, CortexRAG runs **entirely locally**.
-
-| Component | Technology |
-|-----------|------------|
-| LLM | Ollama |
-| Models | Qwen / Phi |
-| Embeddings | sentence-transformers |
-| Vector Store | FAISS |
-| Workflow Engine | LangGraph |
-| Backend API | FastAPI |
-| UI | Streamlit |
-| Chat Memory | MongoDB |
-| Web Search | Tavily |
-
-No OpenAI or external LLM APIs are required.
+### 📚 Advanced RAG Pipeline
+- Semantic chunking & embedding
+- FAISS-based vector similarity search
+- Query rewriting for better retrieval
+- Relevance grading of documents
+- Context-aware response generation
 
 ---
 
-# ⚡ Hardware-Adaptive LLM Selection
+### 🤖 Agentic AI Architecture
+Powered by **LangGraph multi-node workflows**:
 
-CortexRAG automatically selects the best model based on available RAM.
+- Query Analysis
+- Query Classification
+- Retriever Node
+- Web Search Tool
+- ReAct Agent Reasoning
+- Response Generator
 
-| Available RAM | Selected Model |
-|---------------|---------------|
-| < 6GB | phi3:mini |
-| 6-10GB | qwen2.5:3b |
-| >10GB | qwen3.5:9b |
-
-Users can override this manually using `.env`.
+Implements the **ReAct (Reason + Act)** paradigm.
 
 ---
 
-# 🏗 System Architecture
+### 🧠 Fully Local AI Stack
+No OpenAI. No paid APIs. Fully local.
 
+| Component        | Technology                  |
+|----------------|---------------------------|
+| LLM            | Ollama                    |
+| Models         | Qwen / Phi                |
+| Embeddings     | sentence-transformers     |
+| Vector Store   | FAISS                     |
+| Orchestration  | LangGraph                 |
+| Backend        | FastAPI                   |
+| Frontend       | Streamlit                 |
+| Memory         | MongoDB                   |
+| Web Search     | Tavily (optional)         |
 
+---
+
+### ⚡ Hardware-Adaptive Model Selection
+
+Automatically selects model based on RAM:
+
+| RAM Available | Model Used        |
+|--------------|------------------|
+| < 6GB        | phi3:mini        |
+| 6–10GB       | qwen2.5:3b       |
+| > 10GB       | qwen3.5:9b       |
+
+Override via `.env` if needed.
+
+---
+
+## 🏗️ Architecture
 User
 ↓
 Streamlit UI
@@ -109,15 +94,10 @@ Streamlit UI
 FastAPI Backend
 ↓
 LangGraph Agent
-
 ├── Query Classifier
-│
-├── Document Retriever (FAISS)
-│
-├── Web Search Tool (Tavily)
-│
-└── General LLM Reasoning (Ollama)
-
+├── Retriever (FAISS)
+├── Web Search (Tavily)
+└── General LLM (Ollama)
 ↓
 Response Generator
 ↓
@@ -126,135 +106,81 @@ User
 
 ---
 
-# 📦 Project Structure
-
-
+## 📦 Project Structure
 cortex-rag/
-
-src/
-├── main.py
-├── api/
-│ └── routes.py
 │
-├── core/
-│ ├── config.py
-│ └── logger.py
+├── src/ # Core backend logic
+│ ├── main.py # FastAPI entry point
+│ ├── api/ # API routes
+│ ├── core/ # Config & logging
+│ ├── db/ # MongoDB client
+│ ├── llms/ # Ollama integration
+│ ├── memory/ # Chat history
+│ ├── models/ # Data schemas
+│ ├── rag/ # RAG pipeline
+│ └── tools/ # Utility tools
 │
-├── db/
-│ └── mongo_client.py
+├── streamlit_app/ # Frontend UI
+│ ├── home.py
+│ └── pages/chat.py
 │
-├── llms/
-│ └── ollama.py
-│
-├── memory/
-│ ├── chat_history_mongo.py
-│ └── chathistory_in_memory.py
-│
-├── models/
-│ ├── state.py
-│ ├── query_request.py
-│ └── route_identifier.py
-│
-├── rag/
-│ ├── graph_builder.py
-│ ├── retriever_setup.py
-│ ├── document_upload.py
-│ └── reAct_agent.py
-│
-└── tools/
-├── common_tools.py
-└── graph_tools.py
-
-streamlit_app/
-├── home.py
-└── pages/
-└── chat.py
-
-requirements.txt
-README.md
+├── requirements.txt
+├── README.md
+└── .gitignore
 
 
 ---
 
-# 🔌 API Endpoints
+## 🔌 API Endpoints
 
-Base URL:
-
-
-http://localhost:8000
-
-
----
-
-## Query Endpoint
-
-
+### ➤ Query
+```http
 POST /rag/query
-
-
-Example request:
-
-```json
 {
   "query": "What is machine learning?",
   "session_id": "test_session"
 }
 
-Response:
-
-{
-  "result": {
-    "content": "Machine learning is..."
-  }
-}
-Upload Document
+➤ Upload Document
 POST /rag/documents/upload
-
-Example:
-
 curl -X POST http://localhost:8000/rag/documents/upload \
--H "X-Description: Sample document about AI" \
+-H "X-Description: Sample document" \
 -F "file=@document.pdf"
 
-Supported file types:
+Supported formats:
 
-• PDF
-• TXT
+- PDF
+- TXT
 
 📖 Installation
-1 Clone Repository
+1️⃣ Clone Repo
 git clone https://github.com/shREKT7/cortex-rag.git
 cd cortex-rag
-2 Create Virtual Environment
+
+2️⃣ Setup Environment
+
 python -m venv venv
 
-Activate:
-
-Windows
-
+# Windows
 venv\Scripts\activate
 
-Linux / Mac
-
+# Linux/Mac
 source venv/bin/activate
-3 Install Dependencies
+
+3️⃣ Install Dependencies
 pip install -r requirements.txt
-Install Ollama
 
-Download from:
+4️⃣ Install Ollama
 
-https://ollama.com/download
+👉 https://ollama.com/download
 
-Install LLM Models
-
-Recommended models:
-
-ollama pull qwen2.5:3b
+5️⃣ Download Models
 ollama pull qwen3.5:9b
-ollama pull phi3:mini
-Environment Configuration
 
-Create .env
+ollama pull phi3:mini
+
+6️⃣ Configure Environment
+Create a .env file in the project root:
 
 OLLAMA_BASE_URL=http://localhost:11434
 OLLAMA_MODEL=qwen3.5:9b
@@ -263,77 +189,70 @@ TAVILY_API_KEY=your_api_key_here
 
 MONGODB_URL=mongodb://localhost:27017
 MONGODB_DB_NAME=cortexrag
-🚀 Running the System
 
-Start FastAPI backend:
-
+🚀 Run the Project
+Backend
 python -m uvicorn src.main:app --reload
 
-API docs:
-
+Docs:
 http://localhost:8000/docs
 
-Start Streamlit UI:
-
+Frontend
 streamlit run streamlit_app/home.py
 
-Open UI:
-
+UI:
 http://localhost:8501
-🧪 Example Queries
 
-General knowledge:
+🧪 Example Queries
+General
 
 What is machine learning?
-Explain transformers in AI.
 
-Document questions:
+Explain transformers in AI
 
-What topics are discussed in the uploaded document?
-Summarize the document.
+Documents
 
-Search queries:
+Summarize the uploaded document
 
-Latest AI research news.
-Recent developments in large language models.
-🔧 Technology Stack
-Component	Technology
-LLM	Ollama
-Models	Qwen / Phi
-Embeddings	sentence-transformers
-Vector Store	FAISS
-Workflow Engine	LangGraph
-Backend	FastAPI
-UI	Streamlit
-Chat Memory	MongoDB
-Web Search	Tavily
-📊 Advantages of CortexRAG
+What topics are covered?
 
-✔ Fully local LLM inference
-✔ No API costs
+Search
+
+Latest AI research news
+
+Recent developments in LLMs
+
+📊 Why CortexRAG?
+
+✔ Fully local LLM system
+✔ Zero API cost
 ✔ Agentic reasoning workflows
-✔ Modular RAG architecture
+✔ Modular architecture
+✔ Extensible tool integration
 ✔ Document-aware conversations
-✔ Easily extensible tools
 
-🚀 Future Improvements
+🚀 Roadmap
 
-Planned upgrades:
+ Streaming responses
 
-• Streaming responses
-• Hybrid search (vector + BM25)
-• Multi-document indexing
-• Better agent planning
-• Autonomous tool selection
-• Self-improving retrieval pipelines
+ Hybrid search (FAISS + BM25)
+
+ Multi-document indexing
+
+ Smarter agent planning
+
+ Autonomous tool selection
+
+ Self-improving retrieval
 
 👤 Author
 
 Uzair Teli
-
-GitHub
-[text](https://github.com/shREKT7)
+GitHub: https://github.com/shREKT7
 
 📜 License
 
 MIT License
+
+
+
